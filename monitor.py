@@ -16,7 +16,7 @@ print("=" * 80)
 while True:
     with open('ativos.txt', 'r') as f:
         tickers_plain = f.read()
-    tickers = [value + ".SA" for value in tickers_plain.split(",")]
+    tickers = [value.replace('\n', '') + ".SA" for value in tickers_plain.split(",")]
     current_price = web.get_quote_yahoo(tickers)
     table_fii = Table(title="Ativos")
     table_fii.add_column(" ", justify="right", style="blue")
